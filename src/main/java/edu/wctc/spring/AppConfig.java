@@ -10,19 +10,19 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
     @Bean
     public SalesInput salesInput() {
-        //return new InputSummary();
-        return new InputDetail();
+        return new InputSummary();
+        //return new InputDetail();
     }
 
     @Bean
     public ShippingPolicy shippingPolicy() {
-        //return new FlatDomesticShipping();
-        return new FreeShipping();
+        return new FlatDomesticShipping();
+        //return new FreeShipping();
     }
 
     @Bean
     public SalesReport salesReport() {
-        //return new
-        return new ReportDetail();
+         return new ReportSummary();
+        //return new ReportDetail();
     }
 }

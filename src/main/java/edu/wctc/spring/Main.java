@@ -14,20 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Main {
 
-
-
-
-
-
-
     public static void main(String[] args) throws FileNotFoundException {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(AppConfig.class);
         context.refresh();
 
         ((SaleBuilder)context.getBean("saleBuilder")).getSaleReport();
-
-
-
 
 }}

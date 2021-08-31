@@ -21,17 +21,15 @@ public class SaleBuilder {
     @Autowired
     public SaleBuilder(SalesInput si, SalesReport sr, ShippingPolicy sp) {
         SaleBuilder.si = si;
-        this.sr = sr;
-        this.sp = sp;
+        SaleBuilder.sr = sr;
+        SaleBuilder.sp = sp;
         System.out.println("Sale Builder created");
     }
 
     /**one method that performs all three steps**/
-    public static void getSaleReport(){
+    public void getSaleReport(){
         List<Sale> saleReport = si.getSales();
         List<Sale> saleReportWithTax = sp.getShippingCost(saleReport);
-
-        //this should print all the println stuff rom ReportDetail or ReportSummary
         sr.generateReport(saleReportWithTax);
     }
 }
