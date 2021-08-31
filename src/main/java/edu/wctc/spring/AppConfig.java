@@ -16,6 +16,7 @@ public class AppConfig {
 
     @Bean
     public ShippingPolicy shippingPolicy() {
+        //return new FlatDomesticShipping();
         return new FreeShipping();
     }
 

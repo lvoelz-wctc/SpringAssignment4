@@ -11,33 +11,27 @@ import java.util.List;
 
 @Component
 public class SaleBuilder {
-    private SalesInput si;
-    private SalesReport sr;
-    private ShippingPolicy sp;
+    private static SalesInput si;
+    private static SalesReport sr;
+    private static ShippingPolicy sp;
 
-    private List<Sale> saleList;
+    /**private static final List<Sale> saleList = new ArrayList<>();**/
+
 
     @Autowired
     public SaleBuilder(SalesInput si, SalesReport sr, ShippingPolicy sp) {
-        this.si = si;
+        SaleBuilder.si = si;
         this.sr = sr;
         this.sp = sp;
         System.out.println("Sale Builder created");
     }
 
-    /**
-    private List<Sale> createReport() throws FileNotFoundException {
-        File myObj = new File("sales.txt");
-        System.out.println("Report created");
-        return si.getSales(myObj);
-    }
+    /**one method that performs all three steps**/
+    public static void getSaleReport(){
+        List<Sale> saleReport = si.getSales();
+        List<Sale> saleReportWithTax = sp.getShippingCost(saleReport);
 
-    private List<Sale> calculateShipping(List<Sale> saleList) throws FileNotFoundException {
-        System.out.println("Shipping calculated.");
-        return sp.getShippingCost(createReport());
+        //this should print all the println stuff rom ReportDetail or ReportSummary
+        sr.generateReport(saleReportWithTax);
     }
-
-    public void showReport(List<Sale> saleList) {
-        System.out.println("Generating report...");
-    }**/
 }
